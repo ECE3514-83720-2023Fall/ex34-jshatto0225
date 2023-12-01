@@ -278,8 +278,10 @@ BinaryTree<TreeItemType, FunctionType> BinaryTree<TreeItemType, FunctionType>::m
     int mid = (low + high) / 2;
 
     BinaryTree<TreeItemType, FunctionType> tree(array[mid]);
-    tree.attachLeftSubtree(makeBinaryTree(array, low, mid - 1));
-    tree.attachRightSubtree(makeBinaryTree(array, mid + 1, high));
+    BinaryTree<TreeItemType, FunctionType> leftTree = makeBinaryTree(array, low, mid - 1);
+    tree.attachLeftSubtree(leftTree);
+    BinaryTree<TreeItemType, FunctionType> rightTree = makeBinaryTree(array, mid + 1, high);
+    tree.attachRightSubtree(rightTree);
 
     return tree;
 }
